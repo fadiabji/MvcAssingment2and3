@@ -1,0 +1,36 @@
+﻿@model mvcDemo.Models.Guessing
+
+@{
+    ViewData["Title"] = "GuessingGame";
+}
+
+<h1>GuessingGame</h1>
+<h3> Atemp Index : @ViewBag.Index</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="GuessingGame">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <h3>Only for testing: @Model.SNumber</h3><br />
+            <div class="form-group">
+                <label asp-for="Guess" class="control-label"></label>
+                <input asp-for="Guess" class="form-control" />
+                <span asp-validation-for="Guess" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h2>@Model.Message</h2>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guess it" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br />
+<div>
+    <a asp-action="Index">Back to Assignment</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
