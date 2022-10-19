@@ -7,8 +7,8 @@ using System.Xml.Linq;
 
 namespace mvcDemo.Controllers
 {
-    public class AssignmentController : Controller
-        
+   
+    public class AssignmentController : Controller     
     {
         public IActionResult Index()
         {
@@ -40,35 +40,31 @@ namespace mvcDemo.Controllers
             Random rd = new Random();
             int secretNumber = rd.Next(0, 500);
             HttpContext.Session.SetInt32("SNumber", secretNumber);
-            int index = 0;
-            HttpContext.Session.SetInt32("index", index);
             Guessing obj = new Guessing();
             obj.SNumber = secretNumber;
             return View(obj);
         }
 
+
         [HttpPost]
         public IActionResult GuessingGame(Guessing obj)
         {
-            int Index = (int)HttpContext.Session.GetInt32("index");
-            
-            var Snum = HttpContext.Session.GetInt32("SNumber");
-            obj.SNumber = (int)Snum;
+            obj.SNumber = (int)HttpContext.Session.GetInt32("SNumber");
 
             if (obj.Guess < obj.SNumber)
             {
-                //Index += Index + 1;
+                //obj.IncreaseIndex();
                 obj.Message = "You guess is smaller";
             }
                 
             else if (obj.Guess > obj.SNumber)
             {
-                //Index += Index + 1;
+                //obj.IncreaseIndex();
                 obj.Message = "Your guess is higher";
             }
             else
                 obj.Message = "Bingo! You guessed it.";
-            ViewBag.Index = Index;
+            //ViewBag.Index = obj.Index;
             return View(obj);
         }
     }

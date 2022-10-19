@@ -10,5 +10,12 @@ namespace mvcDemo.Models
         public int  Guess { get; set; }
 
         public string Message { get; set; }
+
+        public int Index { get; set; } = 0;
+
+        public void IncreaseIndex()
+        {
+            Index++; 
+        }
     }
 }
