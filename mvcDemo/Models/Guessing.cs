@@ -11,11 +11,16 @@ namespace mvcDemo.Models
 
         public string Message { get; set; }
 
-        public int Index { get; set; } = 0;
+        private static int Index { get; set; }
 
         public void IncreaseIndex()
         {
             Index++; 
+        }
+
+        public int ShowIndex()
+        {
+            return Index;
         }
     }
 }

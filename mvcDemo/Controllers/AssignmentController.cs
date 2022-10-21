@@ -53,18 +53,19 @@ namespace mvcDemo.Controllers
 
             if (obj.Guess < obj.SNumber)
             {
-                //obj.IncreaseIndex();
+                obj.IncreaseIndex();
                 obj.Message = "You guess is smaller";
             }
                 
             else if (obj.Guess > obj.SNumber)
             {
-                //obj.IncreaseIndex();
+                obj.IncreaseIndex();
                 obj.Message = "Your guess is higher";
             }
             else
                 obj.Message = "Bingo! You guessed it.";
-            //ViewBag.Index = obj.Index;
+
+            ViewBag.Index = obj.ShowIndex();
             return View(obj);
         }
     }
